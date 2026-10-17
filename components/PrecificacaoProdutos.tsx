@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useMemo, useRef, useEffect } from "react";
+import { Component, useState, useCallback, useMemo, useRef, useEffect, type ReactNode } from "react";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -174,6 +174,76 @@ const DEFAULT_DATA: Record<CategoryId, Product[]> = {
     p("s2", "Supletivo Médio", "400", "897", SUPLETIVO_COSTS("400"), "0", { venda: "5", dupla: "0", renovacao: "0" }),
   ],
 };
+
+// ─── Dados salvos no navegador ────────────────────────────────────────────────
+// O localStorage pode guardar produtos de versões antigas (sem `discounts`,
+// `variableCosts`, `despesasFixas`…). Completamos o que faltar para a tela nunca
+// quebrar ao abrir uma categoria.
+
+function normalizeProduct(raw: unknown, index: number): Product {
+  const r = (raw && typeof raw === "object" ? raw : {}) as Partial<Product>;
+  const d = (r.discounts && typeof r.discounts === "object" ? r.discounts : {}) as Partial<Discounts>;
+
+  return {
+    id: r.id != null ? String(r.id) : `p_${index}`,
+    name: typeof r.name === "string" ? r.name : "Produto",
+    cost: r.cost != null ? String(r.cost) : "0",
+    price: r.price != null ? String(r.price) : "0",
+    qty: r.qty != null ? String(r.qty) : "1",
+    variableCosts: Array.isArray(r.variableCosts)
+      ? r.variableCosts
+          .filter((c) => c && typeof c === "object")
+          .map((c, i) => ({
+            id: c.id != null ? String(c.id) : `v_${i}`,
+            name: typeof c.name === "string" ? c.name : "Custo",
+            type: c.type === "percent" ? "percent" : "fixed",
+            value: c.value != null ? String(c.value) : "0",
+          }))
+      : [],
+    despesasFixas: r.despesasFixas != null ? String(r.despesasFixas) : "0",
+    discounts: {
+      venda: d.venda != null ? String(d.venda) : "0",
+      dupla: d.dupla != null ? String(d.dupla) : "0",
+      renovacao: d.renovacao != null ? String(d.renovacao) : "0",
+    },
+    ebitdaAlvo: r.ebitdaAlvo != null ? String(r.ebitdaAlvo) : undefined,
+  };
+}
+
+/** Rede de segurança: se algo ainda quebrar, mostra aviso e permite restaurar a categoria. */
+class CategoryBoundary extends Component<
+  { children: ReactNode; onReset: () => void },
+  { failed: boolean }
+> {
+  state = { failed: false };
+
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+
+  render() {
+    if (!this.state.failed) return this.props.children;
+
+    return (
+      <div className="rounded-2xl border border-red-200 bg-red-50 p-6 text-center">
+        <p className="font-semibold text-red-700">Não foi possível exibir esta categoria.</p>
+        <p className="mt-1 text-sm text-gray-500">
+          Os dados salvos neste navegador podem estar desatualizados. Restaurar traz os valores padrão desta categoria.
+        </p>
+        <button
+          type="button"
+          onClick={() => {
+            this.props.onReset();
+            this.setState({ failed: false });
+          }}
+          className="mt-4 rounded-lg bg-gradient-to-br from-gold-dark to-gold px-4 py-2 text-sm font-bold text-ink-950 hover:brightness-110"
+        >
+          Restaurar dados desta categoria
+        </button>
+      </div>
+    );
+  }
+}
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -883,7 +953,15 @@ export default function PrecificacaoProdutos() {
     [setCustomCategories, setData]
   );
 
-  const products = data[activeCategory] ?? [];
+  const rawProducts = data[activeCategory];
+  const products = useMemo(
+    () => (Array.isArray(rawProducts) ? rawProducts.map(normalizeProduct) : []),
+    [rawProducts]
+  );
+
+  const resetCategory = useCallback(() => {
+    setData((prev) => ({ ...prev, [activeCategory]: DEFAULT_DATA[activeCategory] ?? [] }));
+  }, [activeCategory, setData]);
 
   const updateProduct = useCallback(
     (id: string, updated: Product) =>
@@ -987,6 +1065,7 @@ export default function PrecificacaoProdutos() {
         )}
       </div>
 
+      <CategoryBoundary key={activeCategory} onReset={resetCategory}>
       {/* Products list */}
       <div className="space-y-3">
         {products.map((product, i) => (
@@ -1013,6 +1092,7 @@ export default function PrecificacaoProdutos() {
 
       {/* Category insights */}
       <CategoryInsights products={products} catLabel={catConfig.label} />
+      </CategoryBoundary>
 
       {/* Info footer */}
       <p className="text-xs text-gray-400 text-center">
