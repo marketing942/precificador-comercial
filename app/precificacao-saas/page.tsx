@@ -3,7 +3,7 @@ import Link from "next/link";
 import PrecificacaoSaas from "@/components/PrecificacaoSaas";
 
 export const metadata: Metadata = {
-  title: "Precificação de SaaS · Facilitadores Comercial",
+  title: "Precificação de SaaS · Precificador",
   description: "Calcule o preço mensal ideal para seu SaaS com base em Churn, CAC, Margem e LTV/CAC alvo",
 };
 

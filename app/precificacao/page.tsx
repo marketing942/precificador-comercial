@@ -3,7 +3,7 @@ import Link from "next/link";
 import PrecificacaoServico from "@/components/PrecificacaoServico";
 
 export const metadata: Metadata = {
-  title: "Precificação de Serviço · Facilitadores Comercial",
+  title: "Precificação de Serviço · Precificador",
   description: "DRE para precificação de serviços com base em horas e custos operacionais",
 };
 

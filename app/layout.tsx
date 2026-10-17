@@ -18,8 +18,8 @@ const ui = Rajdhani({
 });
 
 export const metadata: Metadata = {
-  title: "Facilitadores Comercial",
-  description: "Ferramentas para o time comercial",
+  title: "Precificador",
+  description: "Ferramentas de precificação do time comercial",
 };
 
 export default function RootLayout({

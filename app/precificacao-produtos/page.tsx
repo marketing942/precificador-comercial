@@ -3,7 +3,7 @@ import Link from "next/link";
 import PrecificacaoProdutos from "@/components/PrecificacaoProdutos";
 
 export const metadata: Metadata = {
-  title: "Precificação de Produtos · Facilitadores Comercial",
+  title: "Precificação de Produtos · Precificador",
   description: "DRE por produto — Mentorias, Presencial, Online, Físicos e Supletivo",
 };
 
