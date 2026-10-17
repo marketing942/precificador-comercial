@@ -175,7 +175,7 @@ export default function CalculadoraTon() {
   return (
     <div className="space-y-5">
       {/* Plan selector */}
-      <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-5">
+      <div className="bg-ink-900 rounded-2xl border border-gray-200 shadow-sm p-5">
         <label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3 block">
           Escolha o plano TON
         </label>
@@ -190,7 +190,7 @@ export default function CalculadoraTon() {
                 className={`text-left rounded-xl border-2 p-4 transition-all ${
                   active
                     ? style.active
-                    : "border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50"
+                    : "border-gray-200 bg-ink-900 hover:border-gray-300 hover:bg-gray-50"
                 }`}
               >
                 <div className="flex items-center justify-between mb-1">
@@ -212,7 +212,7 @@ export default function CalculadoraTon() {
       </div>
 
       {/* Price input */}
-      <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-5">
+      <div className="bg-ink-900 rounded-2xl border border-gray-200 shadow-sm p-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-end">
           <div>
             <label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2 block">
@@ -242,7 +242,7 @@ export default function CalculadoraTon() {
                   className={`flex-1 py-3 rounded-xl text-sm font-bold border-2 transition-all ${
                     maxInstallments === n
                       ? "border-emerald-500 bg-emerald-50 text-emerald-800"
-                      : "border-gray-200 bg-white text-gray-500 hover:border-gray-300"
+                      : "border-gray-200 bg-ink-900 text-gray-500 hover:border-gray-300"
                   }`}
                 >
                   {n}×
@@ -261,19 +261,19 @@ export default function CalculadoraTon() {
           <div className="text-xl font-bold text-emerald-800 mt-2">{fmt(pixLiquido)}</div>
           <div className="text-[11px] text-emerald-700 mt-0.5">líquido recebido</div>
         </div>
-        <div className="bg-white rounded-xl border border-gray-200 p-4">
+        <div className="bg-ink-900 rounded-xl border border-gray-200 p-4">
           <div className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Débito</div>
           <div className="text-xs text-gray-500 mt-0.5">Taxa {fmtPct(plan.debito)}</div>
           <div className="text-xl font-bold text-gray-900 mt-2">{fmt(debitoLiquido)}</div>
           <div className="text-[11px] text-gray-500 mt-0.5">líquido recebido</div>
         </div>
-        <div className="bg-white rounded-xl border border-gray-200 p-4">
+        <div className="bg-ink-900 rounded-xl border border-gray-200 p-4">
           <div className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Crédito à vista</div>
           <div className="text-xs text-gray-500 mt-0.5">Taxa {fmtPct(plan.credito[0])}</div>
           <div className="text-xl font-bold text-gray-900 mt-2">{fmt(creditoVistaLiquido)}</div>
           <div className="text-[11px] text-gray-500 mt-0.5">líquido recebido</div>
         </div>
-        <div className="bg-white rounded-xl border border-gray-200 p-4">
+        <div className="bg-ink-900 rounded-xl border border-gray-200 p-4">
           <div className="text-[10px] font-bold uppercase tracking-wider text-gray-500">
             Crédito {Math.min(12, maxInstallments)}×
           </div>
@@ -286,7 +286,7 @@ export default function CalculadoraTon() {
       </div>
 
       {/* Detailed breakdown table */}
-      <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+      <div className="bg-ink-900 rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
         <div className="px-5 py-3 border-b border-gray-100 flex items-center justify-between">
           <div>
             <h3 className="font-bold text-sm text-gray-900">Simulação por forma de pagamento</h3>
@@ -302,7 +302,7 @@ export default function CalculadoraTon() {
         <div className="overflow-x-auto">
           <table className="w-full text-xs">
             <thead>
-              <tr className="bg-gray-800 text-white">
+              <tr className="bg-ink-700 text-gold-pale">
                 <th className="text-left px-3 py-2.5 font-semibold">Forma de pagamento</th>
                 <th className="text-right px-3 py-2.5 font-semibold">Taxa</th>
                 <th className="text-right px-3 py-2.5 font-semibold">Valor da taxa</th>

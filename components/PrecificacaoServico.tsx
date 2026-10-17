@@ -135,7 +135,7 @@ function DreRow({
     : "text-gray-600";
 
   return (
-    <tr className={`border-b border-gray-100 ${isHeader ? "bg-gray-50" : "bg-white"}`}>
+    <tr className={`border-b border-gray-100 ${isHeader ? "bg-gray-50" : "bg-ink-900"}`}>
       <td className={`px-4 py-2.5 text-sm ${isHeader ? "font-bold text-gray-800" : isSubitem ? "pl-8 text-gray-600" : "text-gray-700 font-medium"}`}>
         {isSubitem && <span className="text-gray-300 mr-1">└</span>}
         {label}
@@ -196,7 +196,7 @@ function CustomCostRow({
   onRemove: (id: string) => void;
 }) {
   return (
-    <tr className="border-b border-gray-100 bg-white group">
+    <tr className="border-b border-gray-100 bg-ink-900 group">
       <td className="pl-8 pr-2 py-2">
         <div className="flex items-center gap-1">
           <span className="text-gray-300 mr-1 text-sm">└</span>
@@ -321,7 +321,7 @@ export default function PrecificacaoServico() {
   return (
     <div className="space-y-6">
       {/* Estrutura operacional */}
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
+      <div className="bg-ink-900 rounded-2xl shadow-sm border border-gray-200 p-6">
         <h2 className="text-base font-semibold text-gray-800 mb-5">Estrutura operacional</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <InputField label="Qtde de funcionários operacionais" value={sFuncionarios} onChange={setFuncionarios} hint="número de colaboradores" />
@@ -333,7 +333,7 @@ export default function PrecificacaoServico() {
       </div>
 
       {/* Precificação de horas */}
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
+      <div className="bg-ink-900 rounded-2xl shadow-sm border border-gray-200 p-6">
         <h2 className="text-base font-semibold text-gray-800 mb-5">Precificação de horas</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <InputField label="Preço de venda da hora" value={sPrecoHora} onChange={setPrecoHora} prefix="R$" />
@@ -355,7 +355,7 @@ export default function PrecificacaoServico() {
 
       {/* DRE Table */}
       {isValid ? (
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+        <div className="bg-ink-900 rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
           <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
             <div>
               <h2 className="text-base font-semibold text-gray-800">DRE — Demonstração de Resultado</h2>
@@ -369,7 +369,7 @@ export default function PrecificacaoServico() {
 
           <table className="w-full">
             <thead>
-              <tr className="bg-gray-800 text-white text-xs font-semibold uppercase tracking-wide">
+              <tr className="bg-ink-700 text-gold-pale text-xs font-semibold uppercase tracking-wide">
                 <th className="text-left px-4 py-3">DRE</th>
                 <th className="text-right px-4 py-3">Valores</th>
                 <th className="text-right px-4 py-3 w-36">% da Venda</th>
@@ -409,7 +409,7 @@ export default function PrecificacaoServico() {
               })}
 
               {/* Add cost button row */}
-              <tr className="border-b border-gray-100 bg-white">
+              <tr className="border-b border-gray-100 bg-ink-900">
                 <td colSpan={4} className="pl-8 py-2">
                   <button
                     onClick={handleAddCustomCost}
@@ -455,7 +455,7 @@ export default function PrecificacaoServico() {
           </div>
         </div>
       ) : (
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-12 text-center">
+        <div className="bg-ink-900 rounded-2xl shadow-sm border border-gray-200 p-12 text-center">
           <p className="text-gray-400 text-sm">Preencha o preço da hora e as horas vendidas para ver o DRE</p>
         </div>
       )}
@@ -468,7 +468,7 @@ function SummaryCard({ label, value, color }: { label: string; value: string; co
     blue: "text-blue-800 bg-blue-50 border-blue-200",
     green: "text-green-800 bg-green-50 border-green-200",
     red: "text-red-800 bg-red-50 border-red-200",
-    gray: "text-gray-700 bg-white border-gray-200",
+    gray: "text-gray-700 bg-ink-900 border-gray-200",
   };
   return (
     <div className={`rounded-xl border p-3 ${colors[color]}`}>

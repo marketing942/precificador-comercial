@@ -5,23 +5,48 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* escala geral um pouco acima do padrão (≈17px): leitura confortável, sem exagero */
+    font-size: 106.25%;
+    color-scheme: dark;
   }
   body {
-    @apply bg-gray-50 text-gray-900;
+    @apply bg-ink-950 text-gray-800;
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+    background-image: radial-gradient(90% 50% at 50% 0%, rgba(175, 146, 86, 0.1), transparent 60%);
+    background-attachment: fixed;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display), system-ui, sans-serif;
+    letter-spacing: 0.005em;
+  }
+  button {
+    font-family: var(--font-ui), system-ui, sans-serif;
+  }
+  ::selection {
+    background: rgba(175, 146, 86, 0.4);
+    color: #fff;
+  }
+  input::placeholder {
+    color: #5f5c52;
+  }
+  /* setas do number/select combinam com o tema */
+  select, input {
+    color-scheme: dark;
   }
 }
 
 @layer utilities {
   .input-field {
-    @apply w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition;
+    @apply w-full px-4 py-2.5 bg-ink-950 border border-gray-200 rounded-lg text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-gold/40 focus:border-gold transition;
   }
   .badge-positive {
-    @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-green-100 text-green-800;
+    @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-green-100 text-green-700;
   }
   .badge-negative {
-    @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-red-100 text-red-800;
+    @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-red-100 text-red-700;
   }
   .badge-neutral {
-    @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-gray-100 text-gray-700;
+    @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-gray-100 text-gray-600;
   }
 }

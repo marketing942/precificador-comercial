@@ -349,7 +349,7 @@ function ProductCard({
   const mlPct = dre.pct(dre.lucroLiquido);
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+    <div className="bg-ink-900 rounded-xl border border-gray-200 overflow-hidden">
       {/* Header */}
       <div
         className="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-gray-50 transition-colors select-none"
@@ -419,7 +419,7 @@ function ProductCard({
           <div className="rounded-xl border border-gray-200 overflow-hidden">
             <table className="w-full text-xs">
               <thead>
-                <tr className="bg-gray-800 text-white">
+                <tr className="bg-ink-700 text-gold-pale">
                   <th className="text-left px-3 py-2 font-semibold">DRE</th>
                   <th className="text-right px-3 py-2 font-semibold">Valores</th>
                   <th className="text-right px-3 py-2 font-semibold w-24">% da Venda</th>
@@ -543,7 +543,7 @@ function ProductCard({
           <div className="rounded-xl border border-gray-200 overflow-hidden">
             <table className="w-full text-xs">
               <thead>
-                <tr className="bg-gray-700 text-white">
+                <tr className="bg-ink-700 text-gold-pale">
                   <th className="text-left px-3 py-2 font-semibold">Desconto</th>
                   <th className="text-right px-3 py-2 font-semibold">Valor máximo</th>
                   <th className="text-right px-3 py-2 font-semibold w-24">%</th>
@@ -576,7 +576,7 @@ function ProductCard({
 
           {/* Viability analysis: break-even + EBITDA target */}
           <div className="rounded-xl border border-gray-200 overflow-hidden">
-            <div className="bg-indigo-900 text-white px-3 py-2 flex items-center justify-between">
+            <div className="bg-ink-700 text-gold-pale px-3 py-2 flex items-center justify-between">
               <span className="text-xs font-semibold tracking-wide">ANÁLISE DE VIABILIDADE</span>
               <div className="flex items-center gap-2">
                 <span className="text-[11px] text-indigo-200">EBITDA Alvo</span>
@@ -668,14 +668,14 @@ function CategoryInsights({ products, catLabel }: { products: Product[]; catLabe
 
   if (products.length === 0) {
     return (
-      <div className="bg-white rounded-2xl border border-gray-200 shadow-sm px-5 py-6 text-center text-sm text-gray-400">
+      <div className="bg-ink-900 rounded-2xl border border-gray-200 shadow-sm px-5 py-6 text-center text-sm text-gray-400">
         Adicione produtos nesta categoria para ver a régua de lucratividade.
       </div>
     );
   }
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+    <div className="bg-ink-900 rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
       <div className="px-5 py-4 border-b border-gray-100 flex flex-wrap items-center justify-between gap-3">
         <div>
           <h3 className="font-bold text-sm text-gray-900 flex items-center gap-2">
@@ -926,7 +926,7 @@ export default function PrecificacaoProdutos() {
   return (
     <div className="space-y-5">
       {/* Category tabs */}
-      <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-1 flex gap-1 overflow-x-auto items-center">
+      <div className="bg-ink-900 rounded-2xl border border-gray-200 shadow-sm p-1 flex gap-1 overflow-x-auto items-center">
         {allCategories.map((cat) => (
           <div key={cat.id} className="relative group/tab flex-1 min-w-max">
             <button

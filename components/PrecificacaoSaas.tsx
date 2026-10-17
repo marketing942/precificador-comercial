@@ -172,7 +172,7 @@ export default function PrecificacaoSaas() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Inputs */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
+        <div className="bg-ink-900 rounded-2xl shadow-sm border border-gray-200 p-6">
           <h2 className="text-base font-semibold text-gray-800 mb-1">Parâmetros do negócio</h2>
           <p className="text-xs text-gray-400 mb-4">Campos em amarelo são editáveis</p>
 
@@ -206,7 +206,7 @@ export default function PrecificacaoSaas() {
         </div>
 
         {/* Results */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
+        <div className="bg-ink-900 rounded-2xl shadow-sm border border-gray-200 p-6">
           <h2 className="text-base font-semibold text-gray-800 mb-4">Resultados calculados</h2>
 
           {isValid ? (
@@ -281,7 +281,7 @@ export default function PrecificacaoSaas() {
 
       {/* Health indicator */}
       {isValid && (
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-5">
+        <div className="bg-ink-900 rounded-2xl shadow-sm border border-gray-200 p-5">
           <h3 className="text-sm font-semibold text-gray-700 mb-4">Indicadores de saúde do SaaS</h3>
           <div className="space-y-3">
             <HealthRow

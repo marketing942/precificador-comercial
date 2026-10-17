@@ -160,7 +160,7 @@ export default function CalculadoraJuros() {
   return (
     <div className="space-y-6">
       {/* Inputs */}
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
+      <div className="bg-ink-900 rounded-2xl shadow-sm border border-gray-200 p-6">
         <h2 className="text-base font-semibold text-gray-800 mb-4">
           Parâmetros da simulação
         </h2>
@@ -288,7 +288,7 @@ export default function CalculadoraJuros() {
 
       {/* Results table */}
       {price > 0 ? (
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+        <div className="bg-ink-900 rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
           <div className="px-6 py-4 border-b border-gray-100">
             <h2 className="text-base font-semibold text-gray-800">
               Simulação de venda —{" "}
@@ -427,7 +427,7 @@ export default function CalculadoraJuros() {
           </div>
         </div>
       ) : (
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-12 text-center">
+        <div className="bg-ink-900 rounded-2xl shadow-sm border border-gray-200 p-12 text-center">
           <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
             <svg
               className="w-8 h-8 text-gray-300"
@@ -451,7 +451,7 @@ export default function CalculadoraJuros() {
 
       {/* Fee breakdown info */}
       {price > 0 && (
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-5">
+        <div className="bg-ink-900 rounded-2xl shadow-sm border border-gray-200 p-5">
           <h3 className="text-sm font-semibold text-gray-700 mb-3">
             Custos fixos do meio de pagamento (Pagar.me)
           </h3>
